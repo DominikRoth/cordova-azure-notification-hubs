@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:amazon="http://schemas.android.com/apk/lib/com.amazon.device.ads" xmlns:rim="http://www.blackberry.com/ns/widgets" id="cordova-azure-notification-hubs" version="1.0.18">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:amazon="http://schemas.android.com/apk/lib/com.amazon.device.ads" xmlns:rim="http://www.blackberry.com/ns/widgets" id="cordova-azure-notification-hubs" version="1.0.19">
   <name>CordovaAzureNotificationHubs</name>
   <description>
 		This plugin allows you register and receive push notifications via Azure Notification Hub.
 	</description>
   <license>MIT</license>
-  <js-module src="www/push.js" name="PushNotificationSchemaa">
-    <clobbers target="PushNotificationSchemaa"/>
+  <js-module src="www/push.js" name="PushNotification">
+    <clobbers target="PushNotification"/>
   </js-module>
   <engines>
     <engine name="cordova" version=">=7.1.0"/>
@@ -59,8 +59,8 @@
   </platform>
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
-      <feature name="PushNotificationSchemaa">
-        <param name="ios-package" value="PushNotificationSchemaa"/>
+      <feature name="PushNotification">
+        <param name="ios-package" value="PushNotification"/>
       </feature>
     </config-file>
     <config-file target="*-Info.plist" parent="UIBackgroundModes">

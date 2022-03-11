@@ -8,13 +8,13 @@
 var exec = cordova.require("cordova/exec");
 
 /**
- * PushNotificationSchemaa constructor.
+ * PushNotification constructor.
  *
  * @param {Object} options to initiate Push Notifications.
- * @return {PushNotificationSchemaa} instance that can be monitored and cancelled.
+ * @return {PushNotification} instance that can be monitored and cancelled.
  */
 
-var PushNotificationSchemaa = function (options) {
+var PushNotification = function (options) {
   this._handlers = {
     registration: [],
     notification: [],
@@ -83,7 +83,7 @@ var PushNotificationSchemaa = function (options) {
  * Unregister from push notifications
  */
 
-PushNotificationSchemaa.prototype.unregister = function (
+PushNotification.prototype.unregister = function (
   successCallback,
   errorCallback,
   options
@@ -127,7 +127,7 @@ PushNotificationSchemaa.prototype.unregister = function (
   );
 };
 
-PushNotificationSchemaa.prototype.addTags = function (
+PushNotification.prototype.addTags = function (
   successCallback,
   errorCallback,
   options
@@ -157,7 +157,7 @@ PushNotificationSchemaa.prototype.addTags = function (
   ]);
 };
 
-PushNotificationSchemaa.prototype.removeTag = function (
+PushNotification.prototype.removeTag = function (
   successCallback,
   errorCallback,
   options
@@ -185,7 +185,7 @@ PushNotificationSchemaa.prototype.removeTag = function (
   ]);
 };
 
-PushNotificationSchemaa.prototype.removeTags = function (
+PushNotification.prototype.removeTags = function (
   successCallback,
   errorCallback,
   options
@@ -215,7 +215,7 @@ PushNotificationSchemaa.prototype.removeTags = function (
   ]);
 };
 
-PushNotificationSchemaa.prototype.getTags = function (
+PushNotification.prototype.getTags = function (
   successCallback,
   errorCallback,
   options
@@ -247,7 +247,7 @@ PushNotificationSchemaa.prototype.getTags = function (
  * Call this to set the application icon badge
  */
 
-PushNotificationSchemaa.prototype.setApplicationIconBadgeNumber = function (
+PushNotification.prototype.setApplicationIconBadgeNumber = function (
   successCallback,
   errorCallback,
   badge
@@ -283,7 +283,7 @@ PushNotificationSchemaa.prototype.setApplicationIconBadgeNumber = function (
  * Get the application icon badge
  */
 
-PushNotificationSchemaa.prototype.getApplicationIconBadgeNumber = function (
+PushNotification.prototype.getApplicationIconBadgeNumber = function (
   successCallback,
   errorCallback
 ) {
@@ -318,7 +318,7 @@ PushNotificationSchemaa.prototype.getApplicationIconBadgeNumber = function (
  * Get the application icon badge
  */
 
-PushNotificationSchemaa.prototype.clearAllNotifications = function (
+PushNotification.prototype.clearAllNotifications = function (
   successCallback,
   errorCallback
 ) {
@@ -365,7 +365,7 @@ PushNotificationSchemaa.prototype.clearAllNotifications = function (
  * @param {Function} callback triggered on the event.
  */
 
-PushNotificationSchemaa.prototype.on = function (eventName, callback) {
+PushNotification.prototype.on = function (eventName, callback) {
   if (!this._handlers.hasOwnProperty(eventName)) {
     this._handlers[eventName] = [];
   }
@@ -379,7 +379,7 @@ PushNotificationSchemaa.prototype.on = function (eventName, callback) {
  * @param {Function} handle function associated with event.
  */
 
-PushNotificationSchemaa.prototype.off = function (eventName, handle) {
+PushNotification.prototype.off = function (eventName, handle) {
   if (this._handlers.hasOwnProperty(eventName)) {
     var handleIndex = this._handlers[eventName].indexOf(handle);
     if (handleIndex >= 0) {
@@ -399,7 +399,7 @@ PushNotificationSchemaa.prototype.off = function (eventName, handle) {
  * @return {Boolean} is true when the event is triggered otherwise false.
  */
 
-PushNotificationSchemaa.prototype.emit = function () {
+PushNotification.prototype.emit = function () {
   var args = Array.prototype.slice.call(arguments);
   var eventName = args.shift();
 
@@ -419,7 +419,7 @@ PushNotificationSchemaa.prototype.emit = function () {
   return true;
 };
 
-PushNotificationSchemaa.prototype.finish = function (
+PushNotification.prototype.finish = function (
   successCallback,
   errorCallback,
   id
@@ -457,15 +457,15 @@ module.exports = {
   /**
    * Register for Push Notifications.
    *
-   * This method will instantiate a new copy of the PushNotificationSchemaa object
+   * This method will instantiate a new copy of the PushNotification object
    * and start the registration process.
    *
    * @param {Object} options
-   * @return {PushNotificationSchemaa} instance
+   * @return {PushNotification} instance
    */
 
   init: function (options) {
-    return new PushNotificationSchemaa(options);
+    return new PushNotification(options);
   },
 
   hasPermission: function (successCallback, errorCallback) {
@@ -486,5 +486,5 @@ module.exports = {
    * .init helper method.
    */
 
-  PushNotificationSchemaa: PushNotificationSchemaa,
+  PushNotification: PushNotification,
 };
